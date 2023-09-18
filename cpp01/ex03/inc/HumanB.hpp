@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjales <mjales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 20:14:13 by mjales            #+#    #+#             */
-/*   Updated: 2023/09/19 00:14:12 by mjales           ###   ########.fr       */
+/*   Created: 2023/09/19 00:13:12 by mjales            #+#    #+#             */
+/*   Updated: 2023/09/19 00:27:21 by mjales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Weapon.hpp>
-#include <HumanA.hpp>
-#include <HumanB.hpp>
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-int main() {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	return 0;
-}
+#include <Weapon.hpp>
+#include <iostream>
+
+class HumanB
+{
+	private:
+		std::string	_name;
+		Weapon*		_weapon;  //Temos que ver como vamos organizar estes casos
+	public:
+		HumanB(std::string name);
+		~HumanB();
+		void	attack();
+		void	setWeapon(Weapon &weapon);
+};
+
+#endif
