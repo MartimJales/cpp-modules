@@ -9,12 +9,8 @@ PhoneBook::~PhoneBook(){}
 
 void PhoneBook::addContact()
 {
-	this->book[this->index].updateContact();
-	std::cout << std::setw(10) << this->book[this->index].formatOutput(this->book[this->index].getName()) << "|";
-	std::cout << std::setw(10) << this->book[this->index].formatOutput(this->book[this->index].getSurname()) << "|";
-	std::cout << std::setw(10) << this->book[this->index].formatOutput(this->book[this->index].getNickname()) << std::endl;
+	this->book[this->index%8].updateContact();
 	this->index++;
-
 }
 
 void	PhoneBook::search()

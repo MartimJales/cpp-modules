@@ -10,6 +10,8 @@ class Contact
 		std::string name;
 		std::string surname;
 		std::string nickname;
+		std::string darkestSecret;
+		std::string phoneNumber;
 	public:
 		Contact();
 		~Contact();
@@ -18,11 +20,14 @@ class Contact
 		std::string getName();
 		std::string getSurname();
 		std::string getNickname();
-		void		setname(std::string input);
+		std::string getDarkestSecret();
+		std::string getPhoneNumber();
+
+		void		setName(std::string input);
 		void		setSurname(std::string input);
 		void		setNickname(std::string input);
-		void		set
-		
+		void		setDarkestSecret(std::string input);
+		void		setPhoneNumber(std::string input);
 
 };
 

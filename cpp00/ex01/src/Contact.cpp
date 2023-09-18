@@ -10,24 +10,22 @@ void Contact::updateContact()
 	std::cout << "\nFirst Name: " << std::flush;
 	std::getline(std::cin, input);
 	this->setName(input);
-	std::cout << input << std::endl;
-
 
 	std::cout << "\nLast Name: " << std::flush;
 	std::getline(std::cin, input);
-	std::cout << input << std::endl;
+	this->setSurname(input);
 
 	std::cout << "\nNickname: " << std::flush;
 	std::getline(std::cin, input);
-	std::cout << input << std::endl;
+	this->setNickname(input);
 
 	std::cout << "\nPhone Number: " << std::flush;
 	std::getline(std::cin, input);
-	std::cout << input << std::endl;
+	this->setPhoneNumber(input);
 
 	std::cout << "\nDarkest Secret: " << std::flush;
 	std::getline(std::cin, input);
-	std::cout << input << std::endl;
+	this->setDarkestSecret(input);
 }
 
 std::string Contact::formatOutput(const std::string& str)
@@ -50,6 +48,30 @@ std::string Contact::getNickname(){
 	return this->nickname;
 }
 
-void Contact::setName(std::string input){
+std::string Contact::getDarkestSecret(){
+	return this->darkestSecret;
+}
 
+std::string Contact::getPhoneNumber(){
+	return this->phoneNumber;
+}
+
+void Contact::setName(std::string input){
+	this->name = input;
+}
+
+void Contact::setSurname(std::string input){
+	this->surname = input;
+}
+
+void Contact::setPhoneNumber(std::string input){
+	this-> phoneNumber= input;
+}
+
+void Contact::setNickname(std::string input){
+	this->nickname = input;
+}
+
+void Contact::setDarkestSecret(std::string input){
+	this->darkestSecret = input;
 }
