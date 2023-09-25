@@ -6,7 +6,7 @@
 /*   By: mjales <mjales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 00:13:12 by mjales            #+#    #+#             */
-/*   Updated: 2023/09/19 00:27:21 by mjales           ###   ########.fr       */
+/*   Updated: 2023/09/25 13:57:16 by mjales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class HumanB
 {
 	private:
 		std::string	_name;
-		Weapon*		_weapon;  //Temos que ver como vamos organizar estes casos
+		Weapon*		_weapon;
 	public:
 		HumanB(std::string name);
 		~HumanB();
