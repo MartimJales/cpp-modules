@@ -18,29 +18,43 @@ void	PhoneBook::search()
 	std::cout << std::setw(10) << "Index" << "|";
 	std::cout << std::setw(10) << "Name" << "|";
 	std::cout << std::setw(10) << "Surname" << "|";
-	std::cout << std::setw(10) << "Nickname" << std::endl;
+	std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
 	std::cout << std::string(41, '-') << std::endl;
 
-	for(int i = 0; i < this->index; ++i)
+	for(int i = 0; i < std::min(this->index, 8); ++i)
 	{
 		std::cout << std::setw(10) << i << "|";
 		std::cout << std::setw(10) << this->book[i].formatOutput(this->book[i].getName()) << "|";
 		std::cout << std::setw(10) << this->book[i].formatOutput(this->book[i].getSurname()) << "|";
-		std::cout << std::setw(10) << this->book[i].formatOutput(this->book[i].getNickname()) << std::endl;
+		std::cout << std::setw(10) << this->book[i].formatOutput(this->book[i].getNickname()) << "|" << std::endl;
 	}
 
-	int entryIndex;
-	std::cout << "Enter index of the entry to display: ";
-	std::cin >> entryIndex;
+	int entryIndex = -1;
+	bool validInput = false;
 
-	if(entryIndex < 0 || entryIndex >= this->index)
+	while (!validInput)
 	{
-		std::cout << "Invalid index!" << std::endl;
+		std::cout << "Enter index of the entry to display: ";
+
+		if (!(std::cin >> entryIndex))
+		{
+			std::cout << "Invalid input. Please enter a valid index." << std::endl;
+			std::cin.clear();
+			while (std::cin.get() != '\n')
+			{
+				continue;
+			}
+		}
+		else if (entryIndex < 0 || entryIndex >= this->index)
+		{
+			std::cout << "Invalid index!" << std::endl;
+		}
+		else
+		{
+			validInput = true;
+		}
 	}
-	else
-	{
-		std::cout << "Name: " << this->book[entryIndex].getName() << std::endl;
-		std::cout << "Surname: " << this->book[entryIndex].getSurname() << std::endl;
-		std::cout << "Nickname: " << this->book[entryIndex].getNickname() << std::endl;
-	}
+	std::cout << "Name: " << this->book[entryIndex].getName() << std::endl;
+	std::cout << "Surname: " << this->book[entryIndex].getSurname() << std::endl;
+	std::cout << "Nickname: " << this->book[entryIndex].getNickname() << std::endl;
 }
