@@ -16,13 +16,20 @@ void Harl::error() {
 	std::cout << "Error message." << std::endl;
 }
 
+Harl::Harl(){
+	keys[0] = "debug";
+	keys[1] = "info";
+	keys[2] = "warning";
+	keys[3] = "error";
+
+	fun[0] = &Harl::debug;
+	fun[1] = &Harl::info;
+	fun[2] = &Harl::warning;
+	fun[3] = &Harl::error;
+}
 
 void Harl::complain(std::string level) {
-	std::map<std::string, void (Harl::*)()> functions;
-	functions.insert(std::make_pair("debug", &Harl::debug));
-	functions.insert(std::make_pair("info", &Harl::info));
-	functions.insert(std::make_pair("warning", &Harl::warning));
-	functions.insert(std::make_pair("error", &Harl::error));
-
-	(this->*(functions.find(level)->second))();
+	for (int i = 0; i < 4; i++)
+		if (keys[i] == level)
+			(this->*fun[i])();
 }
