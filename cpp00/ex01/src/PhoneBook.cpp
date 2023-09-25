@@ -15,6 +15,10 @@ void PhoneBook::addContact()
 
 void	PhoneBook::search()
 {
+	if (this->index == 0){
+		std::cout << "You have no contacts in this awesome phonebook :(" << std::endl;
+		return ;
+	}
 	std::cout << std::setw(10) << "Index" << "|";
 	std::cout << std::setw(10) << "Name" << "|";
 	std::cout << std::setw(10) << "Surname" << "|";
@@ -57,4 +61,9 @@ void	PhoneBook::search()
 	std::cout << "Name: " << this->book[entryIndex].getName() << std::endl;
 	std::cout << "Surname: " << this->book[entryIndex].getSurname() << std::endl;
 	std::cout << "Nickname: " << this->book[entryIndex].getNickname() << std::endl;
+	std::cin.clear();
+	while (std::cin.get() != '\n')
+	{
+		continue;
+	}
 }
