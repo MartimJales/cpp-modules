@@ -14,6 +14,7 @@ std::string intToString(int num)
 
 Brain::Brain()
 {
+	std::cout << "Brain default constructor called" << std::endl;
     for (int i = 0; i < 100; ++i)
     {
         ideas[i] = "Idea " + intToString(i);
@@ -42,4 +43,5 @@ Brain &Brain::operator=(const Brain &obj)
 
 Brain::~Brain()
 {
+	std::cout << "Brain destructor called" << std::endl;
 }

@@ -27,5 +27,11 @@ int main()
     }
     return 0;
 
-	//AAnimal tesst;
+	Dog dog;
+	dog.makeSound();
+
+	Cat cat;
+	cat.makeSound();
+
+	// AAnimal test;
 }

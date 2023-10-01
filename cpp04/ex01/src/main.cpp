@@ -24,5 +24,12 @@ int main()
     {
         delete animals[i];
     }
+
+	Dog basic;
+	{
+		Dog tmp = basic;
+	}
+
+	basic.makeSound();
     return 0;
 }

@@ -4,26 +4,6 @@
 #include "../inc/WrongAnimal.hpp"
 #include "../inc/WrongCat.hpp"
 
-
-// int main()
-// {
-//     // Creating Animal, Cat, Dog, and WrongCat objects
-//     Animal animal;
-//     Cat cat;
-//     Dog dog;
-// 	// WrongAnimal *alien = new WrongAnimal();
-//     WrongCat wrongCat; // = new WrongCat();
-
-//     // Testing makeSound for Animal, Cat, Dog, and WrongCat
-//     animal.makeSound(); // Animal makes a generic sound
-//     cat.makeSound();    // Cat meows
-//     dog.makeSound();    // Dog barks
-// 	// alien.makeSound();
-//     wrongCat.makeSound(); // WrongCat makes a generic sound
-
-//     return 0;
-// }
-
 int main()
 {
 	const Animal* animal = new Animal();
