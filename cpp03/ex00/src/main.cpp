@@ -1,21 +1,5 @@
 #include "../inc/ClapTrap.hpp"
 
-// int main( void ) {
-// 	ClapTrap a("default");
-// 	ClapTrap b( a );
-// 	ClapTrap c = a;
-
-// 	ClapTrap teste("teste");
-
-// 	std::cout << a.getName() << " has " << a.getHP() << " Hp" << std::endl;
-// 	a.attack(teste.getName());
-// 	a.beRepaired(1);
-// 	a.takeDamage(50);
-// 	a.beRepaired(10); // cant be repaired bcs it took to much dmg
-// 	std::cout << a.getName() << " has " << a.getHP() << " Hp" << std::endl;
-// 	return 0;
-// }
-
 int	main() {
 	ClapTrap jales("jales");
 	ClapTrap diogo("diogo");
