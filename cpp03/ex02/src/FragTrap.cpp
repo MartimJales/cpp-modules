@@ -13,6 +13,19 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	std::cout << "FragTrap " << this->getName() << " is alive" << std::endl;
 }
 
+FragTrap::FragTrap(const FragTrap &obj) : ClapTrap(obj)
+{
+	std::cout << "copy constructor of FragTrap called" << std::endl;
+}
+
+FragTrap& FragTrap::operator=(const FragTrap &obj)
+{
+	ClapTrap::operator=(obj);
+	std::cout << "assignation operator of FragTrap called" << std::endl;
+	return (*this);
+}
+
+
 FragTrap::~FragTrap() {
 	std::cout << "FragTrap " << this->getName() << " is dead" << std::endl;
 }

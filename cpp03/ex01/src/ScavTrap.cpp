@@ -14,6 +14,22 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << "ScavTrap " << getName() << " has borned" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &obj) : ClapTrap(obj)
+{
+	std::cout << "copy constructor of ScavTrap called" << std::endl;
+}
+
+
+ScavTrap& ScavTrap::operator=(const ScavTrap &obj)
+{
+	std::cout << "assignation operator of ScavTrap called" << std::endl;
+	if (this == &obj)
+        return *this;
+	ClapTrap::operator=(obj);
+	return *this;
+}
+
+
 ScavTrap::~ScavTrap() {
 	std::cout << "ScavTrap " << getName() << " is dead" << std::endl;
 }
