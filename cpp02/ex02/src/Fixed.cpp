@@ -104,6 +104,11 @@ Fixed Fixed::operator*(const Fixed &other) const
 Fixed Fixed::operator/(const Fixed &other) const
 {
     Fixed result;
+	if (other._value == 0)
+	{
+		std::cout << "can't divide by 0";
+		return result;
+	}
     result._value = (_value << _rawBits) / other._value;
     return result;
 }

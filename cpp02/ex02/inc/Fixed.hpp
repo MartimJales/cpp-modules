@@ -43,7 +43,7 @@ public:
     static const Fixed& min(const Fixed &a, const Fixed &b);
     static Fixed& max(Fixed &a, Fixed &b);
     static const Fixed& max(const Fixed &a, const Fixed &b);
-	
+
 private:
     int _value;
     static const int _rawBits = 8;
