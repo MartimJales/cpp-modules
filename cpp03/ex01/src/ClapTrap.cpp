@@ -1,5 +1,8 @@
 #include "../inc/ClapTrap.hpp"
 
+ClapTrap::ClapTrap(){
+	std::cout << "default constructor called" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name){
 	_name = name;
@@ -26,7 +29,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &obj){
 	_hitPoints = obj._hitPoints;
 	_energyPoints = obj._energyPoints;
 	_attackDamage = obj._attackDamage;
-	std::cout << "copy assinment constructor called" << std::endl;
+	std::cout << "copy assingment constructor called" << std::endl;
 	return *this;
 }
 
