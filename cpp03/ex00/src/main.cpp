@@ -1,34 +1,34 @@
 #include "../inc/ClapTrap.hpp"
 
 int	main() {
-	ClapTrap jales("CLAP-TP");
-	ClapTrap diogo("CLAP-42");
+	ClapTrap goodClap("CLAP-BATMAN");
+	ClapTrap badClap("CLAP-JOKER");
 
-	jales.setAttackDamage(3);
-	diogo.setAttackDamage(4);
+	goodClap.setAttackDamage(3);
+	badClap.setAttackDamage(1);
 
-	diogo.attack(jales.getName());
-	jales.takeDamage(diogo.getAttackDamage());
+	badClap.attack(goodClap.getName());
+	goodClap.takeDamage(badClap.getAttackDamage());
 
-	diogo.attack(jales.getName());
-	jales.takeDamage(diogo.getAttackDamage());
+	badClap.attack(goodClap.getName());
+	goodClap.takeDamage(badClap.getAttackDamage());
 
-	diogo.attack(jales.getName());
-	jales.takeDamage(diogo.getAttackDamage());
+	badClap.attack(goodClap.getName());
+	goodClap.takeDamage(badClap.getAttackDamage());
 
-	jales.beRepaired(5);
+	goodClap.beRepaired(5);
 
-	jales.attack(diogo.getName());
-	diogo.takeDamage(jales.getAttackDamage());
+	goodClap.attack(badClap.getName());
+	badClap.takeDamage(goodClap.getAttackDamage());
 
-	jales.attack(diogo.getName());
-	diogo.takeDamage(jales.getAttackDamage());
+	goodClap.attack(badClap.getName());
+	badClap.takeDamage(goodClap.getAttackDamage());
 
-	jales.attack(diogo.getName());
-	diogo.takeDamage(jales.getAttackDamage());
+	goodClap.attack(badClap.getName());
+	badClap.takeDamage(goodClap.getAttackDamage());
 
-	jales.attack(diogo.getName());
-	diogo.takeDamage(jales.getAttackDamage());
+	goodClap.attack(badClap.getName());
+	badClap.takeDamage(goodClap.getAttackDamage());
 
 	return 0;
 }

@@ -11,7 +11,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->setHitPoints(100);
 	this->setEnergyPoints(50);
 	this->setAttackDamage(20);
-	std::cout << "ScavTrap " << getName() << " has borned" << std::endl;
+	std::cout << "ScavTrap " << getName() << " has been born" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &obj) : ClapTrap(obj)

@@ -1,7 +1,7 @@
 #include "../inc/ClapTrap.hpp"
 
 ClapTrap::ClapTrap(){
-	std::cout << "default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name){
@@ -9,11 +9,11 @@ ClapTrap::ClapTrap(std::string name){
 	_hitPoints = 10;
 	_energyPoints = 10;
 	_attackDamage = 0;
-	std::cout << "default constructor called" << std::endl;
+	std::cout << "Parameterized constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap(){
-	std::cout << "destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &obj){
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap(const ClapTrap &obj){
 	_hitPoints = obj._hitPoints;
 	_energyPoints = obj._energyPoints;
 	_attackDamage = obj._attackDamage;
-	std::cout << "copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &obj){
@@ -29,7 +29,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &obj){
 	_hitPoints = obj._hitPoints;
 	_energyPoints = obj._energyPoints;
 	_attackDamage = obj._attackDamage;
-	std::cout << "copy assingment constructor called" << std::endl;
+	std::cout << "Copy assignment constructor called" << std::endl;
 	return *this;
 }
 
@@ -52,7 +52,7 @@ void ClapTrap::attack(const std::string& target){
 void ClapTrap::takeDamage(unsigned int amount){
 	if (_hitPoints <= 0)
 	{
-		std::cout << "Do you calm joe! " << _name << " is already dead" << std::endl;
+		std::cout << "Do you calm Joe!? " << _name << " is already dead" << std::endl;
 	}
 	else if (amount >= _hitPoints)
 	{
@@ -97,9 +97,9 @@ int ClapTrap::getAttackDamage()
 	return _attackDamage;
 }
 
-void ClapTrap::setName(std::string Name)
+void ClapTrap::setName(std::string name)
 {
-	_name = Name;
+	_name = name;
 }
 
 void ClapTrap::setHitPoints(int hitPoints){
