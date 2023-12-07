@@ -23,6 +23,7 @@ Brain::Brain()
 
 Brain::Brain(const Brain &obj)
 {
+	std::cout << "Brain has been created by copying" << std::endl;
     for (int i = 0; i < 100; ++i)
     {
         ideas[i] = obj.ideas[i];
@@ -31,6 +32,7 @@ Brain::Brain(const Brain &obj)
 
 Brain &Brain::operator=(const Brain &obj)
 {
+	std::cout << "Brain has been assigned" << std::endl;
     if (this != &obj)
     {
         for (int i = 0; i < 100; ++i)

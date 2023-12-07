@@ -13,6 +13,7 @@ class Cat : virtual public AAnimal
 		Cat &operator=(const Cat &obj);
 		~Cat();
 		void makeSound() const;
+		std::string getType() const;
 
 	private:
 		std::string		type;

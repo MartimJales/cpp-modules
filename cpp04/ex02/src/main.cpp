@@ -5,7 +5,10 @@
 
 int main()
 {
-    const int numAnimals = 10;
+    // AAnimal* j = new AAnimal();
+
+
+    const int numAnimals = 4;
     AAnimal* animals[numAnimals];
 
     for (int i = 0; i < numAnimals; ++i)
@@ -19,20 +22,23 @@ int main()
             animals[i] = new Cat();
         }
     }
+    std::cout << std::endl;
 
     for (int i = 0; i < numAnimals; ++i)
     {
         delete animals[i];
     }
+    std::cout << std::endl;
 
     Dog dog;
     dog.makeSound();
+    std::cout << std::endl;
 
     Cat cat;
     cat.makeSound();
+    std::cout << std::endl;
 
-    //AAnimal test;
-
+    // AAnimal test;
     return 0;
 }
 

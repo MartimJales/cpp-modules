@@ -29,7 +29,7 @@ Animal::~Animal()
 
 void Animal::makeSound() const
 {
-    std::cout << type << " makes a generic sound." << std::endl;
+    std::cout << type << " makes some sound." << std::endl;
 }
 
 std::string Animal::getType() const{

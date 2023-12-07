@@ -13,6 +13,7 @@ class Dog : virtual public AAnimal
 		Dog &operator=(const Dog &obj);
 		~Dog();
 		void makeSound() const;
+		std::string getType() const;
 
 	private:
 		std::string		type;

@@ -1,5 +1,19 @@
 #include "../inc/AAnimal.hpp"
 
+AAnimal::AAnimal(){}
+
+AAnimal::AAnimal(AAnimal const& animal)
+{
+    *this = animal;
+}
+
+AAnimal& AAnimal::operator=(AAnimal const& rhs)
+{
+    if (this != &rhs)
+        type = rhs.type;
+    return *this;
+}
+
 AAnimal::~AAnimal()
 {
     std::cout << type << " has been destroyed." << std::endl;

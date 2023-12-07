@@ -1,9 +1,29 @@
 #include <iostream>
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "Animal.hpp"
 
 int main() {
-    const int numAnimals = 10;
+	// Concrete Brain Test
+    Dog basic;
+	std::cout << std::endl;
+    {
+        Dog tmp = basic;
+		std::cout << std::endl;
+    }
+	std::cout << std::endl;
+    basic.makeSound();
+	std::cout << std::endl;
+
+	// Destruction chaining
+	Animal* animal = new Dog();
+	std::cout << std::endl;
+    delete animal;
+	std::cout << std::endl;
+
+
+	// Personal Test
+    const int numAnimals = 4;
     Animal* animals[numAnimals];
 
     for (int i = 0; i < numAnimals; ++i) {
@@ -13,17 +33,11 @@ int main() {
             animals[i] = new Cat();
         }
     }
-
+	std::cout << std::endl;
     for (int i = 0; i < numAnimals; ++i) {
         delete animals[i];
     }
-
-    Dog basic;
-    {
-        Dog tmp = basic;
-    }
-
-    basic.makeSound();
+	std::cout << std::endl;
     return 0;
 }
 
