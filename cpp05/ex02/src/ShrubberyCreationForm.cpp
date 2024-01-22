@@ -19,7 +19,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-    checkExecution(executor); // Verifica se o formulário está assinado e se o grau do burocrata é suficiente.
+    checkExecution(executor);
 
 	std::string filename = getTarget() + "_shrubbery";
     std::ofstream ofs(filename.c_str());
