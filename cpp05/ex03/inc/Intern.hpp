@@ -7,9 +7,7 @@ class Intern {
 public:
 	class UnknownFormException : public std::exception {
 	public:
-		const char* what() const throw() {
-			return "Error: Unknown form type";
-		}
+		const char* what() const throw();
 	};
 
 	Intern();

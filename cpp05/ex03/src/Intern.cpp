@@ -30,3 +30,7 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target) 
         throw Intern::UnknownFormException();
     }
 }
+
+const char* Intern::UnknownFormException::what() const throw() {
+	return "Unknown form type";
+}

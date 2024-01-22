@@ -30,8 +30,16 @@ void Form::beSigned(const Bureaucrat& bureaucrat) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form) {
-    os << "Form: " << form.getName() << ", Is Signed: " << (form.getIsSigned() ? "Yes" : "No")
-       << ", Grade Required To Sign: " << form.getGradeRequiredToSign()
-       << ", Grade Required To Execute: " << form.getGradeRequiredToExecute();
+    os << "Form: " << form.getName() << "\nSigned: " << (form.getIsSigned() ? "Yes" : "No")
+       << "\nGrade Required To Sign: " << form.getGradeRequiredToSign()
+       << "\nGrade Required To Execute: " << form.getGradeRequiredToExecute();
     return os;
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return "Grade too high to change the form";
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return "Grade too low to change the form";
 }

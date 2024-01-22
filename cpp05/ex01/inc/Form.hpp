@@ -7,34 +7,29 @@
 
 class Form {
 public:
-    class GradeTooHighException : public std::exception {
-        const char* what() const throw() {
-            return "Form::Grade too high";
-        }
-    };
+	class GradeTooHighException : public std::exception {
+        public:
+			virtual const char* what() const throw();
+	};
 
-    class GradeTooLowException : public std::exception {
-        const char* what() const throw() {
-            return "Form::Grade too low";
-        }
-    };
+	class GradeTooLowException : public std::exception {
+        public:
+			virtual const char* what() const throw();
+	};
+
+	Form(const std::string& name, int gradeToSign, int gradeToExecute);
+	std::string getName() const;
+	bool getIsSigned() const;
+	int getGradeRequiredToSign() const;
+	int getGradeRequiredToExecute() const;
+	void beSigned(const Bureaucrat& bureaucrat);
 
 private:
-    const std::string name;
-    bool isSigned;
-    const int gradeRequiredToSign;
-    const int gradeRequiredToExecute;
-
-public:
-    Form(const std::string& name, int gradeToSign, int gradeToExecute);
-    std::string getName() const;
-    bool getIsSigned() const;
-    int getGradeRequiredToSign() const;
-    int getGradeRequiredToExecute() const;
-
-    void beSigned(const Bureaucrat& bureaucrat);
+	const std::string name;
+	bool isSigned;
+	const int gradeRequiredToSign;
+	const int gradeRequiredToExecute;
 };
-
 std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif

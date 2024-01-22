@@ -50,7 +50,7 @@ int main() {
             delete form;
         }
     } catch (const Intern::UnknownFormException& e) {
-        std::cerr  << e.what() << std::endl;
+        std::cerr  <<  "Exception: " << e.what() << std::endl;
     }
 
     return 0;
