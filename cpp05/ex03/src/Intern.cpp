@@ -16,19 +16,34 @@ Intern& Intern::operator=(const Intern& ) {
 
 Intern::~Intern() {}
 
+AForm* createShrubberyForm(const std::string& target) {
+    return new ShrubberyCreationForm(target);
+}
+
+AForm* createRobotomyForm(const std::string& target) {
+    return new RobotomyRequestForm(target);
+}
+
+AForm* createPresidentialForm(const std::string& target) {
+    return new PresidentialPardonForm(target);
+}
+
+const Intern::FormPair Intern::formPairs[] = {
+    {"shrubbery creation", createShrubberyForm},
+    {"robotomy request", createRobotomyForm},
+    {"presidential pardon", createPresidentialForm}
+};
+
+const int Intern::numForms = sizeof(Intern::formPairs) / sizeof(Intern::FormPair);
+
 AForm* Intern::makeForm(const std::string& formName, const std::string& target) const {
-    if (formName == "shrubbery creation") {
-        std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
-        return new ShrubberyCreationForm(target);
-    } else if (formName == "robotomy request") {
-        std::cout << "Intern creates RobotomyRequestForm" << std::endl;
-        return new RobotomyRequestForm(target);
-    } else if (formName == "presidential pardon") {
-        std::cout << "Intern creates PresidentialPardonForm" << std::endl;
-        return new PresidentialPardonForm(target);
-    } else {
-        throw Intern::UnknownFormException();
+    for (int i = 0; i < numForms; ++i) {
+        if (formPairs[i].name == formName) {
+            std::cout << "Intern creates " << formName << std::endl;
+            return formPairs[i].creator(target);
+        }
     }
+    throw Intern::UnknownFormException();
 }
 
 const char* Intern::UnknownFormException::what() const throw() {
