@@ -1,11 +1,25 @@
 #include "../inc/Form.hpp"
 #include "../inc/Bureaucrat.hpp"
 
+Form::Form() : name("default"), isSigned(false), gradeRequiredToSign(1), gradeRequiredToExecute(1) {}
+
 Form::Form(const std::string& name, int gradeToSign, int gradeToExecute)
     : name(name), isSigned(false), gradeRequiredToSign(gradeToSign), gradeRequiredToExecute(gradeToExecute) {
     if (gradeToSign < 1 || gradeToExecute < 1) throw GradeTooHighException();
     if (gradeToSign > 150 || gradeToExecute > 150) throw GradeTooLowException();
 }
+
+Form::Form(const Form& form)
+	: name(form.name), isSigned(form.isSigned), gradeRequiredToSign(form.gradeRequiredToSign),
+	  gradeRequiredToExecute(form.gradeRequiredToExecute) {}
+
+Form& Form::operator=(const Form& form) {
+	if (this == &form) return *this;
+	this->isSigned = form.isSigned;
+	return *this;
+}
+
+Form::~Form() {}
 
 std::string Form::getName() const {
     return name;

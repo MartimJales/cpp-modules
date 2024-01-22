@@ -17,7 +17,11 @@ public:
 			virtual const char* what() const throw();
 	};
 
+	Form();
 	Form(const std::string& name, int gradeToSign, int gradeToExecute);
+	Form(const Form& form);
+	Form& operator=(const Form& form);
+	~Form();
 	std::string getName() const;
 	bool getIsSigned() const;
 	int getGradeRequiredToSign() const;
