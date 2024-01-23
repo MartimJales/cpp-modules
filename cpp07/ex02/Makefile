@@ -13,8 +13,12 @@ INC_DIR	=	inc
 
 ####### FILES #######
 SRC		=	$(shell find src/ -name '*.cpp')
+TPP		=	$(shell find inc/ -name '*.tpp')
 OBJ		=	$(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
 NAME 	=	Array
+
+
+
 
 all: $(NAME)
 
@@ -23,9 +27,13 @@ $(NAME): $(OBJ)
 	@$(CC) $(OBJ) $(FLAGS) -o $(NAME)
 	@printf "$(GREEN_B)[$(NAME) ready to use]\n$(RESET)"
 
-$(OBJ_DIR)/%.o: src/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: src/%.cpp $(TPP) | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -I$(INC_DIR) -c $< -o $@
 	@printf "$(BLUE)[Compiling]     "$@"$(RESET)\n"
+
+# $(OBJ_DIR)/%.o: src/%.cpp | $(OBJ_DIR)
+# 	@$(CC) $(FLAGS) -I$(INC_DIR) -c $< -o $@
+# 	@printf "$(BLUE)[Compiling]     "$@"$(RESET)\n"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

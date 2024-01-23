@@ -1,24 +1,37 @@
 
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
+
+#include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 
 template <typename T>
-void iter(T *array, int length, void (*f)(T &)) {
-	for (int i = 0; i < length; ++i) {
-		f(array[i]);
-	}
-}
+class Array
+{
+	public:
+		// Exceptions
+		class InvalidIndexException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+		// OCF
+		Array();
+		Array(unsigned int n);
+		Array(const Array& other);
+		~Array();
 
-template <typename T>
-void iter(T *array, int length, void (*f)(T const &)) {
-	for (int i = 0; i < length; ++i) {
-		f(array[i]);
-	}
-}
+		// Methods
+		Array& operator=(const Array& other);
+		T& operator[](unsigned int i);
+		const T& operator[](unsigned int i) const;
+		unsigned int size() const;
 
-template <typename T>
-void processElement(T &element) {
-	element += 1;
-}
+	private:
+		T* _array;
+		unsigned int _size;
+};
+
+#include "Array.tpp"
 
 #endif
