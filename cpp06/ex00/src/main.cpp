@@ -1,4 +1,4 @@
-#include "../inc/ex00.hpp"
+#include "../inc/ScalarConverter.hpp"
 
 int main(int argc, char** argv) {
     if (argc != 2) {
