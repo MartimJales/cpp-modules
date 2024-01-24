@@ -18,6 +18,9 @@ class ScalarConverter {
 		static bool isDouble(std::string convert);
 		static bool isException(std::string convert);
 
+		static bool isGreat(std::string convert, std::string num_limit);
+		static bool isLess(std::string convert, std::string num_limit);
+
 		static void printChar(std::string convert);
 		static void printInt(std::string convert);
 		static void printFloat(std::string convert);

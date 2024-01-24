@@ -25,8 +25,9 @@ bool ScalarConverter::isInt(std::string convert) {
             return false;
         }
     }
-    float num = atof(convert.c_str());
-	if (num == HUGE_VALF || num == -HUGE_VALF)
+    if (isGreat(convert, "2147483647"))
+        return false;
+    if (isLess(convert, "-2147483648"))
         return false;
     return true;
 }
@@ -44,10 +45,10 @@ bool ScalarConverter::isFloat(std::string convert) {
             return false;
         }
     }
-    long long f = static_cast<float>(atol(convert.c_str()));
-    if (f < std::numeric_limits<float>::min() || f > std::numeric_limits<float>::max()) {
+    if (isGreat(convert, "3.4028235e+38"))
         return false;
-    }
+    if (isLess(convert, "-3.4028235e+38"))
+        return false;
     return true;
 }
 
@@ -64,6 +65,10 @@ bool ScalarConverter::isDouble(std::string convert) {
             return false;
         }
     }
+    if (isGreat(convert, "1.7976931348623157e+308"))
+        return false;
+    if (isLess(convert, "-1.7976931348623157e+308"))
+        return false;
     return true;
 }
 
@@ -142,7 +147,7 @@ void ScalarConverter::printException(std::string convert) {
         std::cout << "double: -inf" << std::endl;
     }
     else {
-        std::cout << "Invalid Input" << std::endl;
+        std::cout << "Invalid Input or Overflow" << std::endl;
     }
 }
 
@@ -162,5 +167,34 @@ void ScalarConverter::convert(std::string convert) {
         printDouble(convert);
     } else {
         printException(convert);
+    }
+}
+
+bool ScalarConverter::isGreat(std::string convert, std::string num_limit) {
+    if (convert.length() < num_limit.length()) {
+        return false;
+    }
+    else if (convert.length() > num_limit.length()) {
+        return true;
+    }
+    else {
+        return convert > num_limit;
+    }
+}
+
+bool ScalarConverter::isLess(std::string convert, std::string num_limit) {
+    if (convert[0] != '-') {
+        return false;
+    }
+    if (convert.length() < num_limit.length()) {
+        return false;
+    }
+    // Se for mais longa, é definitivamente menor
+    else if (convert.length() > num_limit.length()) {
+        return true;
+    }
+    // Se tiver o mesmo tamanho, compare lexicograficamente
+    else {
+        return convert < num_limit;
     }
 }
