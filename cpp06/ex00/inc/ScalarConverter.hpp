@@ -27,6 +27,8 @@ class ScalarConverter {
 		static void printDouble(std::string convert);
 		static void printException(std::string convert);
 
+		static int getPrecision(std::string convert);
+
 		static void convert(std::string convert);
 
 	private:

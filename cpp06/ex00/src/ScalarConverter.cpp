@@ -42,13 +42,11 @@ bool ScalarConverter::isFloat(std::string convert) {
             if (dot) return false;
             dot = true;
         } else if (!std::isdigit(convert[i])) {
+            if (i == convert.length() - 1 && (convert[i] == 'f' || convert[i] == 'F'))
+                return true;
             return false;
         }
     }
-    if (isGreat(convert, "3.4028235e+38"))
-        return false;
-    if (isLess(convert, "-3.4028235e+38"))
-        return false;
     return true;
 }
 
@@ -65,10 +63,6 @@ bool ScalarConverter::isDouble(std::string convert) {
             return false;
         }
     }
-    if (isGreat(convert, "1.7976931348623157e+308"))
-        return false;
-    if (isLess(convert, "-1.7976931348623157e+308"))
-        return false;
     return true;
 }
 
@@ -78,7 +72,7 @@ bool ScalarConverter::isException(std::string convert) {
 
 void ScalarConverter::printChar(std::string convert) {
     char c = static_cast<char>(convert[0]);
-    std::cout << "char: " << c << std::endl;
+    std::cout << "char: '" << c << "'" << std::endl;
     std::cout << "int: " << static_cast<int>(c) << std::endl;
     std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
     std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
@@ -90,11 +84,11 @@ void ScalarConverter::printInt(std::string convert) {
     if (i < 32 || i > 126) {
         std::cout << "char: Non displayable" << std::endl;
     } else {
-        std::cout << "char: " << static_cast<char>(i) << std::endl;
+        std::cout << "char: '" << static_cast<char>(i) << "\'" << std::endl;
     }
     std::cout << "int: "  << i << std::endl;
-    std::cout << "float: " << static_cast<float>(i) << ".0f" << std::endl;
-    std::cout << "double: " << static_cast<double>(i) << ".0" << std::endl;
+    std::cout << "float: " << static_cast<float>(i) << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(i) << std::endl;
 }
 
 void ScalarConverter::printFloat(std::string convert) {
@@ -102,7 +96,7 @@ void ScalarConverter::printFloat(std::string convert) {
     if (f < 32 || f > 126) {
         std::cout << "char: Non displayable" << std::endl;
     } else {
-        std::cout << "char: " << static_cast<char>(f) << std::endl;
+        std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
     }
     if (f > std::numeric_limits<int>::max() || f < std::numeric_limits<int>::min()) {
         std::cout << "int: impossible" << std::endl;
@@ -118,7 +112,7 @@ void ScalarConverter::printDouble(std::string convert) {
     if (d < 32 || d > 126) {
         std::cout << "char: Non displayable" << std::endl;
     } else {
-        std::cout << "char: " << static_cast<char>(d) << std::endl;
+        std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
     }
     if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
         std::cout << "int: impossible" << std::endl;
@@ -151,19 +145,29 @@ void ScalarConverter::printException(std::string convert) {
     }
 }
 
+int ScalarConverter::getPrecision(std::string convert) {
+    if (convert.find('.') == std::string::npos) {
+        return 1;
+    }
+    int precision = 0;
+    for (size_t i = convert.find('.') + 1; i < convert.length(); ++i) {
+        if (convert[i] == 'f' || convert[i] == 'F') {
+            return precision;
+        }
+        ++precision;
+    }
+    return precision;
+}
+
 void ScalarConverter::convert(std::string convert) {
-    std::cout << std::fixed << std::setprecision(1);
-    if (isChar(convert)) {
-        std::cout << "CHAR" << std::endl;
-        printChar(convert);
-    } else if (isInt(convert)) {
-        std::cout << "INT" << std::endl;
+    std::cout << std::fixed << std::setprecision(getPrecision(convert));
+    if (isInt(convert)) {
         printInt(convert);
+    } else if (isChar(convert)) {
+        printChar(convert);
     } else if (isFloat(convert)) {
-        std::cout << "FLOAT" << std::endl;
         printFloat(convert);
     } else if (isDouble(convert)) {
-        std::cout << "DOUBLE" << std::endl;
         printDouble(convert);
     } else {
         printException(convert);
