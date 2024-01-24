@@ -1,3 +1,16 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mjales <mjales@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/28 18:53:37 by gda_cruz          #+#    #+#              #
+#    Updated: 2024/01/24 15:58:10 by mjales           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+####### COLORS #######
 RED		=	\033[0;31m
 GREEN_B	=	\033[1;32m
 BLUE	=	\033[0;34m
@@ -14,7 +27,7 @@ INC_DIR	=	inc
 ####### FILES #######
 SRC		=	$(shell find src/ -name '*.cpp')
 OBJ		=	$(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
-NAME 	=	Serializer
+NAME 	=	Serializater
 
 all: $(NAME)
 

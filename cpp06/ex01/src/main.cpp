@@ -1,21 +1,16 @@
-#include "../inc/ex01.hpp"
+#include "../inc/Serializer.hpp"
 
 int main() {
-    // Create a Data object
-    Data originalData(42);
+	Data *data = new Data;
+	Data *deserial;
+	uintptr_t serial;
 
-    // Serialize the pointer to the Data object
-    uintptr_t serializedValue = Serializer::serialize(&originalData);
-
-    // Deserialize the uintptr_t back to a pointer
-    Data* deserializedData = Serializer::deserialize(serializedValue);
-
-    // Check if the deserialized pointer is equal to the original pointer
-    if (deserializedData == &originalData) {
-        std::cout << "Serialization and deserialization successful!" << std::endl;
-    } else {
-        std::cout << "Serialization and deserialization failed!" << std::endl;
-    }
-
-    return 0;
+	data->value = "42 School";
+	serial = Serializer::serialize(data);
+	deserial = Serializer::deserialize(serial);
+	std::cout << "Serialized: " << serial << std::endl;
+	std::cout << "Original: " << data->value << std::endl;
+	std::cout << "Deserialized: " << deserial->value << std::endl;
+	std::cout << "Memory address check:\n    Original: " << data << "\n    Deserial: " << deserial << std::endl;
+	delete data;
 }

@@ -1,4 +1,7 @@
-#include "../inc/ex02.hpp"
+#include "../inc/Base.hpp"
+#include "../inc/A.hpp"
+#include "../inc/B.hpp"
+#include "../inc/C.hpp"
 
 int main() {
     // Generate a random instance and identify its type
