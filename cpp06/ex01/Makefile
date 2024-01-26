@@ -6,7 +6,7 @@
 #    By: mjales <mjales@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/28 18:53:37 by gda_cruz          #+#    #+#              #
-#    Updated: 2024/01/24 15:58:10 by mjales           ###   ########.fr        #
+#    Updated: 2024/01/26 11:45:43 by mjales           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ INC_DIR	=	inc
 ####### FILES #######
 SRC		=	$(shell find src/ -name '*.cpp')
 OBJ		=	$(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
-NAME 	=	Serializater
+NAME 	=	Serializer
 
 all: $(NAME)
 
