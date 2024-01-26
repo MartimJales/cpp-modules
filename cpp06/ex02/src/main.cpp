@@ -5,27 +5,38 @@
 
 int main() {
     // Generate a random instance and identify its type
+    std::cout << "Random generation: " << std::endl;
     Base* randomInstance = generate();
     randomInstance->identify();
 
     // Clean up
     delete randomInstance;
 
-    // Test with specific instances
-    A aInstance;
-    B bInstance;
-    C cInstance;
+    A a;
+    B b;
+    C c;
 
-    Base* aPtr = &aInstance;
-    Base* bPtr = &bInstance;
-    Base* cPtr = &cInstance;
+    Base* aPtr = &a;
+    Base* bPtr = &b;
+    Base* cPtr = &c;
 
-    aPtr->identify(); // Should print "A"
-    bPtr->identify(); // Should print "B"
-    cPtr->identify(); // Should print "C"
+    std::cout << "Child identify: " << std::endl;
 
-    // Clean up for specific instances (not necessary for stack-allocated objects)
-    // No need to delete aPtr, bPtr, or cPtr as they point to stack-allocated objects
+    aPtr->identify();
+    bPtr->identify();
+    cPtr->identify();
+
+    identify(aPtr);
+    identify(bPtr);
+    identify(cPtr);
+
+    identify(a);
+    identify(b);
+    identify(c);
+
+    // Testar com um ponteiro NULL
+    Base* nullPtr = NULL;
+    identify(nullPtr);
 
     return 0;
 }
