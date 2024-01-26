@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 template <typename T>
 class Array
@@ -19,10 +20,10 @@ class Array
 		Array();
 		Array(unsigned int n);
 		Array(const Array& other);
+		Array& operator=(const Array& other);
 		~Array();
 
 		// Methods
-		Array& operator=(const Array& other);
 		T& operator[](unsigned int i);
 		const T& operator[](unsigned int i) const;
 		unsigned int size() const;
