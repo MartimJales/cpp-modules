@@ -1,6 +1,22 @@
 #include "../inc/Span.hpp"
 
+Span::Span() : max_size(0) {}
+
 Span::Span(unsigned int N) : max_size(N) {}
+
+Span::Span(const Span& other) {
+	*this = other;
+}
+
+Span& Span::operator=(const Span& other) {
+	if (this != &other) {
+		max_size = other.max_size;
+		numbers = other.numbers;
+	}
+	return *this;
+}
+
+Span::~Span() {}
 
 void Span::addNumber(int number) {
     if (numbers.size() >= max_size) {

@@ -10,8 +10,13 @@
 
 class Span {
 	public:
+		//OCF
 		Span();
 		Span(unsigned int N);
+		Span(const Span &other);
+		Span &operator=(const Span &other);
+		~Span();
+		//Methods
 		void addNumber(int number);
 		template <typename T>
 		void addNumber(T begin, T end);
@@ -23,6 +28,6 @@ class Span {
 		unsigned int max_size;
 };
 
-#include "../inc/Span.tpp"
+#include "Span.tpp"
 
-#endif 
+#endif
