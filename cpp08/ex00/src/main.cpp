@@ -1,27 +1,29 @@
 #include "../inc/EasyFind.hpp"
 
 int main() {
-    int arr[] = {1, 2, 3, 4, 5};
+    int arr[] = {1, 2, 3, 14, 6, 12, 7, 42, 4, 5};
+	int size = sizeof(arr) / sizeof(arr[0]);
+	int	numToFind = 42;
 
 	// Vector
 	std::cout << "VECTOR" << std::endl;
-    std::vector<int> vec(arr, arr + sizeof(arr) / sizeof(arr[0]));
+    std::vector<int> vec(arr, arr + size);
 	try {
-		std::vector<int>::iterator it = easyfind(vec, 3);
-		std::cout << "Primeira ocorrência de 3 em vector: " << *it << std::endl;
+		std::vector<int>::iterator it = easyfind(vec, numToFind);
+		std::cout << "I found the number " << *it << std::endl;
 	} catch (std::exception &e) {
-		std::cout << "não encontrado no vector" << std::endl;
+		std::cout << "I did not find " << numToFind << std::endl;
 	}
 
 	// List
 	std::cout << "LIST" << std::endl;
+	numToFind = 43;
 	std::list<int> lst(arr, arr + sizeof(arr) / sizeof(arr[0]));
 	try {
-		std::list<int>::iterator it = easyfind(lst, 3);
-		std::cout << "Primeira ocorrência de 3 em list: " << *it << std::endl;
+		std::list<int>::iterator it = easyfind(lst, numToFind);
+		std::cout << "I found the number " << *it << std::endl;
 	} catch (std::exception &e) {
-		std::cout << "não encontrado na list" << std::endl;
+		std::cout << "I did not find " << numToFind << std::endl;
 	}
-
     return 0;
 }
