@@ -26,16 +26,10 @@ int Span::shortestSpan() const {
 }
 
 int Span::longestSpan() const {
-    if (numbers.size() < 2) {
-        throw std::logic_error("Not enough numbers to find a span");
-    }
-    int min = *std::min_element(numbers.begin(), numbers.end());
-    int max = *std::max_element(numbers.begin(), numbers.end());
-    return max - min;
-}
-
-void Span::addNumber(const std::vector<int>& numbers) {
-    for (std::vector<int>::const_iterator it = numbers.begin(); it != numbers.end(); ++it) {
-        addNumber(*it);
-    }
+	if (numbers.size() < 2) {
+		throw std::logic_error("Not enough numbers to find a span");
+	}
+	int min = *std::min_element(numbers.begin(), numbers.end());
+	int max = *std::max_element(numbers.begin(), numbers.end());
+	return max - min;
 }
