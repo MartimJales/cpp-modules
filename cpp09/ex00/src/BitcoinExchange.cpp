@@ -97,7 +97,7 @@ void BitcoinExchange::execLine(std::string const &line) {
 
 	// Valida a data
 	if (!isValidDate(date)) {
-		std::cout << "Error: invalid date format " << std::endl;
+		std::cout << "Error: invalid date" << std::endl;
 		return ;
 	}
 
