@@ -5,7 +5,7 @@ RPN::RPN(void) {
 }
 
 RPN::RPN(RPN const &src) {
-	*this = src;
+	_data = src._data;
 	return;
 }
 
@@ -26,7 +26,7 @@ std::string doubleToString(double valor) {
     return oss.str();
 }
 
-void RPN::makeCalculus(std::string const &token) {
+int RPN::makeCalculus(std::string const &token) {
 	double a = atof(this->_data.top().c_str());
 	this->_data.pop();
 	double b = atof(this->_data.top().c_str());
@@ -40,10 +40,11 @@ void RPN::makeCalculus(std::string const &token) {
 	else if (token[0] == '/') {
 		if (a == 0) {
 			std::cout << "Error: division by zero" << std::endl;
-			return;
+			return 1;
 		}
 		this->_data.push(doubleToString(b / a));
 	}
+	return 0;
 }
 
 void RPN::run(std::string const &str) {
@@ -54,7 +55,7 @@ void RPN::run(std::string const &str) {
 				std::cout << "Error: not enough values in the stack" << std::endl;
 				return;
 			}
-			this->makeCalculus(tokens);
+			if (this->makeCalculus(tokens) == 1) return;
 		}
 		else if (tokens[0] >= '0' && tokens[0] <= '9') {
 			this->_data.push(tokens);

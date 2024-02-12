@@ -17,7 +17,7 @@ class RPN {
 
 		//Methods
 		void run(std::string const &str);
-		void makeCalculus(std::string const &token);
+		int makeCalculus(std::string const &token);
 
 	private:
 		//Attributes
