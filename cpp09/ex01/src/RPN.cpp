@@ -9,18 +9,18 @@ RPN::RPN(RPN const &src) {
 	return;
 }
 
-RPN::~RPN(void) {
-	return;
-}
-
 RPN &RPN::operator=(RPN const &rhs) {
 	if (this != &rhs) {
-		//Do whatever
+		this->_data = rhs._data;
 	}
 	return *this;
 }
 
-std::string doubleParaString(double valor) {
+RPN::~RPN(void) {
+	return;
+}
+
+std::string doubleToString(double valor) {
     std::ostringstream oss;
     oss << valor;
     return oss.str();
@@ -32,27 +32,23 @@ void RPN::makeCalculus(std::string const &token) {
 	double b = atof(this->_data.top().c_str());
 	this->_data.pop();
 	if (token[0] == '+')
-		this->_data.push(doubleParaString(b + a));
+		this->_data.push(doubleToString(b + a));
 	else if (token[0] == '-')
-		this->_data.push(doubleParaString(b - a));
+		this->_data.push(doubleToString(b - a));
 	else if (token[0] == '*')
-		this->_data.push(doubleParaString(b * a));
+		this->_data.push(doubleToString(b * a));
 	else if (token[0] == '/') {
 		if (a == 0) {
 			std::cout << "Error: division by zero" << std::endl;
 			return;
 		}
-		this->_data.push(doubleParaString(b / a));
+		this->_data.push(doubleToString(b / a));
 	}
 }
 
 void RPN::run(std::string const &str) {
-	(void)str;
 	char *tokens = strtok((char *)str.c_str(), " ");
 	while (tokens != NULL) {
-
-
-
 		if (tokens[0] == '+' || tokens[0] == '-' || tokens[0] == '*' || tokens[0] == '/') {
 			if (this->_data.size() < 2) {
 				std::cout << "Error: not enough values in the stack" << std::endl;
