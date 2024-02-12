@@ -5,7 +5,7 @@ BitcoinExchange::BitcoinExchange(void) {
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &src) {
-	*this = src;
+	_data = src._data;
 	return;
 }
 
@@ -15,7 +15,7 @@ BitcoinExchange::~BitcoinExchange(void) {
 
 BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 	if (this != &rhs) {
-		//Do whatever
+		_data = rhs._data;
 	}
 	return *this;
 }
